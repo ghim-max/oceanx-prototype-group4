@@ -1,10 +1,8 @@
-import { useNavigate } from 'react-router-dom';
 import { LIBRARY_YTD, OCEANX_REPORT_MONTH } from '../data/oceanxMetrics';
 import { SectionHeader } from './SectionHeader';
 import styles from './HealthStrip.module.css';
 
 export function HealthStrip() {
-  const navigate = useNavigate();
 
   const totalItems = LIBRARY_YTD.websites + LIBRARY_YTD.digitalMedia;
   const newItems = LIBRARY_YTD.newCreated;
@@ -15,10 +13,6 @@ export function HealthStrip() {
   const provenItems = 42; // prototype value
 
   const formatNumber = (num: number): string => num.toLocaleString();
-
-  const handleScrollToHidden = () => {
-    navigate('/team/insights', { state: { scrollToSection: 'hidden' } });
-  };
 
   return (
     <section className={styles.strip} aria-label="Library health">
@@ -71,13 +65,13 @@ export function HealthStrip() {
           <div className={styles.statInner}>
             <div className={styles.labelRow}>
               <span className={styles.accentSquare} aria-hidden="true" />
-              <span className={styles.labelText}>Co-created</span>
+              <span className={styles.labelText}>Adapted</span>
             </div>
             <div className={styles.numberRow}>
               <span className={styles.bigNumber}>{formatNumber(coCreatedItems)}</span>
             </div>
           </div>
-          <p className={styles.sentence}>Co-created with alumni</p>
+          <p className={styles.sentence}>Adapted by alumni</p>
         </div>
         <div className={styles.stat}>
           <div className={styles.statInner}>
@@ -90,9 +84,6 @@ export function HealthStrip() {
             </div>
           </div>
           <p className={styles.sentence}>Hidden from library</p>
-          <button type="button" className={styles.obsoleteLink} onClick={handleScrollToHidden}>
-            View hidden
-          </button>
         </div>
       </div>
       <p className={styles.sectionNote}>
