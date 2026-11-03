@@ -3,14 +3,9 @@ import { SectionHeader } from './SectionHeader';
 import styles from './HealthStrip.module.css';
 
 export function HealthStrip() {
-
-  const totalItems = LIBRARY_YTD.websites + LIBRARY_YTD.digitalMedia;
   const newItems = LIBRARY_YTD.newCreated;
-  const coCreatedItems = LIBRARY_YTD.alumniCoCreated;
+  const adaptedItems = LIBRARY_YTD.alumniCoCreated;
   const obsoleteItems = LIBRARY_YTD.obsolete;
-
-  // Proven from governanceService (prototype)
-  const provenItems = 42; // prototype value
 
   const formatNumber = (num: number): string => num.toLocaleString();
 
@@ -27,27 +22,25 @@ export function HealthStrip() {
           <div className={styles.statInner}>
             <div className={styles.labelRow}>
               <span className={styles.accentSquare} aria-hidden="true" />
-              <span className={styles.labelText}>Total items</span>
+              <span className={styles.labelText}>Websites</span>
             </div>
             <div className={styles.numberRow}>
-              <span className={styles.bigNumber}>{formatNumber(totalItems)}</span>
+              <span className={styles.bigNumber}>{formatNumber(LIBRARY_YTD.websites)}</span>
             </div>
           </div>
-          <p className={styles.sentence}>
-            {LIBRARY_YTD.websites} websites, {LIBRARY_YTD.digitalMedia} digital media files
-          </p>
+          <p className={styles.sentence}>Websites in the library</p>
         </div>
         <div className={styles.stat}>
           <div className={styles.statInner}>
             <div className={styles.labelRow}>
               <span className={styles.accentSquare} aria-hidden="true" />
-              <span className={styles.labelText}>Proven</span>
+              <span className={styles.labelText}>Digital media</span>
             </div>
             <div className={styles.numberRow}>
-              <span className={styles.bigNumber}>{formatNumber(provenItems)}</span>
+              <span className={styles.bigNumber}>{formatNumber(LIBRARY_YTD.digitalMedia)}</span>
             </div>
           </div>
-          <p className={styles.sentence}>Marked Proven by OceanX team</p>
+          <p className={styles.sentence}>Digital media files in the library</p>
         </div>
         <div className={styles.stat}>
           <div className={styles.statInner}>
@@ -68,10 +61,10 @@ export function HealthStrip() {
               <span className={styles.labelText}>Adapted</span>
             </div>
             <div className={styles.numberRow}>
-              <span className={styles.bigNumber}>{formatNumber(coCreatedItems)}</span>
+              <span className={styles.bigNumber}>{formatNumber(adaptedItems)}</span>
             </div>
           </div>
-          <p className={styles.sentence}>Adapted by alumni</p>
+          <p className={styles.sentence}>Adapted by partners</p>
         </div>
         <div className={styles.stat}>
           <div className={styles.statInner}>
